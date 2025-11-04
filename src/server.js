@@ -1,17 +1,9 @@
-import express from 'express';
-import pkg from 'pg';
+import app from './app.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const { Pool } = pkg;
-const app = express();
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-
-const pool = new Pool({
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  host: process.env.PGHOST,
-  port: process.env.PGPORT,
-  database: process.env.PGDATABASE
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
